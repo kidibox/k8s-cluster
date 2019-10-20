@@ -1,0 +1,7 @@
+namespace: traefik
+
+resources:
+  - ./00-namespace.yaml
+  - ./10-ingress-route-crd.yaml
+  - ./20-service.yaml
+  - ./30-deployment.yaml
