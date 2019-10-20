@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  url: https://argocd.kidibox.net
+
+  users.anonymous.enabled: 'false'
+
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: 10c77286a01503afb06a
+          clientSecret: $githubClientSecret
+          orgs:
+            - name: kidibox

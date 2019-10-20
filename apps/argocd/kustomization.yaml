@@ -1,0 +1,24 @@
+namespace: argocd
+
+resources:
+  - ./base/00-namespace.yaml
+  - ./base/10-install.yaml
+  - ./base/20-ingress-route.yaml
+
+patchesStrategicMerge:
+  - config.yaml
+
+generators:
+  - secrets.yaml
+
+patchesJSON6902:
+  # Adds the --insecure flag since Treafik is taking care of TLS termination
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/command/-
+        value: --insecure
