@@ -1,0 +1,19 @@
+on: [push]
+
+name: AzurePowerShellSample
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Login via Az module
+      uses: azure/login@v1.1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+        enable-AzPSSession: true
+
+    - name: Run Az CLI script
+      run: |
+        az webapp list --query "[?state=='Running']"
