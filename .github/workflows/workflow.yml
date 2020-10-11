@@ -16,4 +16,4 @@ jobs:
 
     - name: Run Az CLI script
       run: |
-        az webapp list --query "[?state=='Running']"
+        az group list
