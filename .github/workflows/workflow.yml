@@ -13,7 +13,6 @@ jobs:
         uses: azure/login@v1.1
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
-          enable-AzPSSession: true
 
       - uses: hashicorp/setup-terraform@v1
       - name: Terraform fmt
