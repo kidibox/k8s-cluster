@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 0.12"
 
   backend "remote" {
-    organization = "kid"
+    organization = "kidibox"
 
     workspaces {
       name = "terraform-k8s-azure"
@@ -11,5 +11,11 @@ terraform {
 }
 
 provider "azurerm" {
-  version = ">=1.28.0"
+  version = "=2.13.0"
+  # version = ">=2.31.1"
+  features {}
+}
+
+provider "azuread" {
+  version = ">=0.7.0"
 }
