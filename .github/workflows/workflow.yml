@@ -15,6 +15,9 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
 
       - uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{secrets.TERRAFORM_CLOUD_TOKEN}}
+
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
