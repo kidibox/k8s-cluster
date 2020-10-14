@@ -17,14 +17,14 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   resource_group_name = azurerm_resource_group.k8s.name
 
   default_node_pool {
-    name            = "default"
-    node_count           = var.node_count
-    vm_size         = var.node_size
+    name       = "default"
+    node_count = var.node_count
+    vm_size    = var.node_size
   }
 
   service_principal {
-    client_id = azuread_application.k8s_cluster.application_id
-    client_secret = azuread_service_principal_password.k8s_cluster.value
+    client_id     = azuread_application.aks_app.application_id
+    client_secret = azuread_service_principal_password.aks_sp_password.value
   }
 
   role_based_access_control {
