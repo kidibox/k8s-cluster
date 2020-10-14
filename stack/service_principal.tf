@@ -3,7 +3,7 @@ variable "sp_name" {
 }
 
 resource "azuread_application" "aks_app" {
-  name = var.sp_name
+  name = var.cluster_name
 }
 
 resource "azuread_service_principal" "aks_sp" {
