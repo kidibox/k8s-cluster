@@ -22,8 +22,6 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     vm_size    = var.node_size
   }
 
-  enable_pod_security_policy = true
-
   identity {
     type = "SystemAssigned"
   }
