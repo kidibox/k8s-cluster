@@ -22,12 +22,28 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     vm_size    = var.node_size
   }
 
-  service_principal {
-    client_id     = azuread_application.aks_app.application_id
-    client_secret = azuread_service_principal_password.aks_sp_password.value
+  enable_pod_security_policy = true
+
+  identity {
+    type = "SystemAssigned"
   }
+
+  # service_principal {
+  #   client_id     = azuread_application.aks_app.application_id
+  #   client_secret = azuread_service_principal_password.aks_sp_password.value
+  # }
 
   role_based_access_control {
     enabled = true
+
+    azure_active_directory {
+      managed = true
+    }
+  }
+
+  addon_profile {
+    azure_policy {
+      enabled = true
+    }
   }
 }
