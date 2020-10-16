@@ -11,7 +11,7 @@ terraform {
 }
 
 provider "azurerm" {
-  version = "=2.13.0"
+  # version = "=2.13.0"
   # version = ">=2.31.1"
   features {}
 }
