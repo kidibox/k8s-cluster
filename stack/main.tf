@@ -40,10 +40,4 @@ resource "azurerm_kubernetes_cluster" "cluster" {
       managed = true
     }
   }
-
-  addon_profile {
-    azure_policy {
-      enabled = true
-    }
-  }
 }
