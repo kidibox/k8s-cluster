@@ -1,2 +1,2 @@
 creation_rules:
-  - azure_keyvault: 'https://kidibox.vault.azure.net/keys/sops-key/812039879f57498690276f874e8d007f'
+  - azure_keyvault: 'https://kidibox.vault.azure.net/keys/sops/75046b5a4e664f1699195f95f0a6a2b3'
