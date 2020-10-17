@@ -31,6 +31,10 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 
     azure_active_directory {
       managed = true
+
+      admin_group_object_ids = [
+        azuread_group.admins.id,
+      ]
     }
   }
 }
