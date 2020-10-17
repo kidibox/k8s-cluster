@@ -22,7 +22,7 @@ variable "node_size" {
   default = "Standard_B2s"
 }
 
-variable "key_vault_owner_ids" {
+variable "key_vault_owner_object_ids" {
   type    = list
   default = []
 }
