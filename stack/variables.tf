@@ -23,6 +23,11 @@ variable "node_size" {
 }
 
 variable "key_vault_owner_ids" {
-  type = list
+  type    = list
+  default = []
+}
+
+variable "cluster_admin_object_ids" {
+  type    = list
   default = []
 }
