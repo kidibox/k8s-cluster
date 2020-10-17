@@ -47,6 +47,20 @@ resource "azurerm_key_vault" "main" {
   purge_protection_enabled    = false
   soft_delete_enabled         = true
   soft_delete_retention_days  = 7
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "create",
+      "get",
+    ]
+
+    secret_permissions = [
+      "set",
+    ]
+  }
 }
 
 resource "azurerm_key_vault_key" "sops" {
