@@ -49,10 +49,26 @@ resource "azurerm_key_vault" "main" {
   soft_delete_retention_days  = 7
 }
 
+resource "azurerm_key_vault_key" "sops" {
+  name         = "sops"
+  key_vault_id = azurerm_key_vault.main.id
+  key_type     = "RSA"
+  key_size     = 4096
+
+  key_opts = [
+    "encrypt",
+    "decrypt",
+  ]
+}
+
 output "azure_key_vault_id" {
   value = azurerm_key_vault.main.id
 }
 
 output "azure_key_vault_uri" {
   value = azurerm_key_vault.main.vault_uri
+}
+
+output "sops_key_id" {
+  value = azurerm_key_vault_key.sops.id
 }
