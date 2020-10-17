@@ -4,6 +4,10 @@ data "azurerm_kubernetes_service_versions" "current" {
 
 data "azurerm_client_config" "current" {}
 
+data "azuread_user" "admin" {
+  object_id = var.admin_principal_id
+}
+
 resource "azurerm_resource_group" "k8s" {
   name     = var.resource_group_name
   location = var.location
@@ -51,6 +55,21 @@ resource "azurerm_key_vault" "main" {
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "create",
+      "get",
+   ]
+
+    secret_permissions = [
+      "set",
+    ]
+  }
+
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azuread_user.admin.id
 
     key_permissions = [
       "create",

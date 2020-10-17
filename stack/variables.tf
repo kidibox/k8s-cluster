@@ -21,3 +21,7 @@ variable "node_count" {
 variable "node_size" {
   default = "Standard_B2s"
 }
+
+variable "admin_principal_id" {
+  type = string
+}
