@@ -55,9 +55,19 @@ resource "azurerm_key_vault" "main" {
     key_permissions = [
       "create",
       "get",
+      "list",
+      "decrypt",
+      "encrypt",
+      "sign",
+      "verify",
     ]
 
     secret_permissions = [
+      "backup",
+      "get",
+      "list",
+      "recover",
+      "restore",
       "set",
     ]
   }
