@@ -37,4 +37,14 @@ resource "azurerm_kubernetes_cluster" "cluster" {
       ]
     }
   }
+
+  addon_profile {
+    aci_connector_linux {
+      enabled = true
+    }
+
+    http_application_routing {
+      enabled = false
+    }
+  }
 }
