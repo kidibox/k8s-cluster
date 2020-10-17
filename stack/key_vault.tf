@@ -25,7 +25,7 @@ resource "azurerm_key_vault_key" "sops" {
   ]
 
   depends_on = [
-    azurerm_role_assignment.key_vault_owner
+    azurerm_role_assignment.key_vault_owners
   ]
 }
 
