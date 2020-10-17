@@ -2,6 +2,8 @@ data "azurerm_kubernetes_service_versions" "current" {
   location = var.location
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "k8s" {
   name     = var.resource_group_name
   location = var.location
@@ -26,11 +28,6 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     type = "SystemAssigned"
   }
 
-  # service_principal {
-  #   client_id     = azuread_application.aks_app.application_id
-  #   client_secret = azuread_service_principal_password.aks_sp_password.value
-  # }
-
   role_based_access_control {
     enabled = true
 
@@ -38,4 +35,24 @@ resource "azurerm_kubernetes_cluster" "cluster" {
       managed = true
     }
   }
+}
+
+resource "azurerm_key_vault" "main" {
+  name                        = "kidibox"
+  sku_name                    = "standard"
+  location                    = azurerm_resource_group.k8s.location
+  resource_group_name         = azurerm_resource_group.k8s.name
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
+  enabled_for_disk_encryption = true
+  purge_protection_enabled    = false
+  soft_delete_enabled         = true
+  soft_delete_retention_days  = 7
+}
+
+output "azure_key_vault_id" {
+  value = azurerm_key_vault.main.id
+}
+
+output "azure_key_vault_uri" {
+  value = azurerm_key_vault.main.vault_uri
 }
