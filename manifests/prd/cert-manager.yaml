@@ -6,7 +6,7 @@ metadata:
   namespace: gotk-system
 spec:
   interval: 10m0s
-  path: ./manifests/prd/cert-manager
+  path: ./apps/cert-manager
   prune: true
   sourceRef:
     kind: GitRepository

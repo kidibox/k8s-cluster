@@ -6,7 +6,7 @@ metadata:
   namespace: gotk-system
 spec:
   interval: 5m0s
-  path: ./manifests/prd/external-dns
+  path: ./apps/external-dns
   prune: true
   sourceRef:
     kind: GitRepository

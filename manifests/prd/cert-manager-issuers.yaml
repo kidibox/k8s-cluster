@@ -8,7 +8,7 @@ spec:
   dependsOn:
   - name: cert-manager
   interval: 5m0s
-  path: ./manifests/prd/cert-manager-issuers
+  path: ./apps/cert-manager-issuers
   prune: true
   sourceRef:
     kind: GitRepository
