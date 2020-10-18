@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: cert-manager
+  namespace: gotk-system
+spec:
+  interval: 10m0s
+  path: ./manifests/prd/cert-manager
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: gotk-system
+  validation: client
+
