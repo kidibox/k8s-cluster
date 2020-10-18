@@ -16,6 +16,6 @@ spec:
         env:
         - name: CF_API_TOKEN
           valueFrom:
-            secretRef:
+            secretKeyRef:
               name: cloudflare-api-token-secret
               key: api-token
