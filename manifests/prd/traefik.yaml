@@ -29,3 +29,6 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: gotk-system
+  values:
+    ingressClass:
+      isDefaultClass: true
