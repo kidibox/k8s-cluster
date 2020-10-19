@@ -31,4 +31,5 @@ spec:
         namespace: gotk-system
   values:
     ingressClass:
+      enabled: true
       isDefaultClass: true
