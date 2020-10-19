@@ -33,7 +33,7 @@ spec:
     ingressClass:
       enabled: true
       isDefaultClass: true
-      providers:
-        kubernetesIngress:
-          publishedService:
-            enabled: true
+    providers:
+      kubernetesIngress:
+        publishedService:
+          enabled: true
